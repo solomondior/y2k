@@ -1,0 +1,3 @@
+[submodule "crypto-dashboard"]
+	path = crypto-dashboard
+	url = https://github.com/IDouble/Customizable-Crypto-Currency-Dashboard-with-Chart.git
