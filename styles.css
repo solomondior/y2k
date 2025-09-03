@@ -99,7 +99,7 @@ body {
 
 /* Specific icon styles */
 .community-icon {
-    background: white;
+    background: transparent;
     color: white;
     font-size: 24px;
     font-weight: bold;
@@ -109,7 +109,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
@@ -1709,14 +1708,29 @@ body {
 
 
 /* ===== OTHER WINDOWS ===== */
-.scanner-header, .meme-header, .degen-header {
+.scanner-header, .degen-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.scanner-header h2, .meme-header h2, .degen-header h2 {
+.scanner-header h2, .degen-header h2 {
     font-size: 24px;
     margin-bottom: 10px;
+}
+
+.meme-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.meme-header h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
 }
 
 .scanner-input, .degen-controls {
