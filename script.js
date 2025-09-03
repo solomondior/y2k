@@ -153,14 +153,14 @@ document.querySelectorAll('.icon').forEach(icon => {
             } else {
                 console.log(`Window element not found: ${appWindows[tooltip]}`); // Debug log
             }
-        } else if (tooltip === 'Twitter') {
-            // Handle Twitter redirect
-            const twitterUrl = this.getAttribute('data-url');
-            if (twitterUrl) {
-                console.log(`Redirecting to Twitter: ${twitterUrl}`);
-                window.open(twitterUrl, '_blank');
+        } else if (tooltip === 'Twitter' || tooltip === 'X-COMMUNITY') {
+            // Handle Twitter/X-COMMUNITY redirect
+            const url = this.getAttribute('data-url');
+            if (url) {
+                console.log(`Redirecting to: ${url}`);
+                window.open(url, '_blank');
             } else {
-                console.log('No Twitter URL found');
+                console.log('No URL found');
             }
         } else {
             console.log(`No window mapping found for tooltip: ${tooltip}`); // Debug log
