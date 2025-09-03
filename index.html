@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y2K COIN - Retro Desktop</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Matrix Rain Background -->
+        <div class="matrix-rain" id="matrix-rain"></div>
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <!-- Top Row -->
+            <div class="icon" data-tooltip="Trading Terminal">
+                <div class="icon-image trading-icon">📈</div>
+                <div class="icon-label">Trading Terminal</div>
+            </div>
+            
+            <div class="icon" data-tooltip="Rug Scanner">
+                <div class="icon-image scanner-icon">🔍</div>
+                <div class="icon-label">Rug Scanner</div>
+            </div>
+            
+            <div class="icon" data-tooltip="MSN Messenger">
+                <div class="icon-image messenger-icon">💬</div>
+                <div class="icon-label">MSN Messenger</div>
+            </div>
+            
+            <!-- Third Row -->
+            <div class="icon" data-tooltip="Meme Folder">
+                <div class="icon-image folder-icon">📁</div>
+                <div class="icon-label">Meme Folder</div>
+            </div>
+            
+            <div class="icon" data-tooltip="Twitter" data-url="https://x.com/Y2Ksol_DEV">
+                <div class="icon-image twitter-icon">𝕏</div>
+                <div class="icon-label">Twitter</div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="icon" data-tooltip="Media Player">
+                <div class="icon-image media-icon">🎵</div>
+                <div class="icon-label">Media Player</div>
+            </div>
+            
+            <div class="icon" data-tooltip="Degen Mode">
+                <div class="icon-image degen-icon">🎰</div>
+                <div class="icon-label">Degen Mode</div>
+            </div>
+            
+            <div class="icon" data-tooltip="Netscape Navigator">
+                <div class="icon-image browser-icon">🌐</div>
+                <div class="icon-label">Netscape Navigator</div>
+            </div>
+        </div>
+
+        <!-- Central Content -->
+        <div class="central-content">
+            <div class="y2k-logo-faded">
+                <img src="logo.png" alt="Y2K Logo" class="faded-logo">
+            </div>
+            <div class="contract-address">
+                <span class="ca-label">CA:</span>
+                <span class="ca-text">9PUqM9R6cEtAw6XqnQSWKs81CBQayBQDrccHti2hpump</span>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Trading Terminal Window -->
+        <div class="app-window trading-window-bg" id="trading-window">
+            <div class="window-title-bar">
+                <div class="window-title">Crypto Trading Terminal v2.0</div>
+                <div class="window-controls">
+                    <div class="window-btn minimize">─</div>
+                    <div class="window-btn maximize">□</div>
+                    <div class="window-btn close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="ticker-row">
+                    <div class="ticker-item">
+                        <span class="ticker-name">SOL:</span>
+                        <span class="ticker-price" id="sol-price">Loading...</span>
+                        <span class="ticker-change" id="sol-change">--</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-name">DREAM:</span>
+                        <span class="ticker-price" id="dream-price">Loading...</span>
+                        <span class="ticker-change" id="dream-change">--</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-name">BTC:</span>
+                        <span class="ticker-price" id="btc-price">Loading...</span>
+                        <span class="ticker-change" id="btc-change">--</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-name">ETH:</span>
+                        <span class="ticker-price" id="eth-price">Loading...</span>
+                        <span class="ticker-change" id="eth-change">--</span>
+                    </div>
+                </div>
+                
+                <!-- Paper Trading Portfolio -->
+                <div class="portfolio-panel">
+                    <div class="portfolio-title">
+                        <span class="portfolio-icon">💼</span>
+                        Paper Trading Portfolio
+                    </div>
+                    <div class="portfolio-balance">
+                        <span class="balance-label">
+                            <span class="balance-icon">💰</span>
+                            Balance
+                        </span>
+                        <span class="balance-amount" id="portfolio-balance">$10,000.00</span>
+                    </div>
+                    <div class="portfolio-positions">
+                        <span class="positions-label">
+                            <span class="positions-icon">🚀</span>
+                            SOL Holdings
+                        </span>
+                        <span class="positions-amount" id="sol-holdings">0.00 SOL</span>
+                    </div>
+                </div>
+                
+                <div class="terminal-grid">
+                    <div class="terminal-panel chart-panel">
+                        <div class="panel-title">Live Chart</div>
+                        <div class="chart-content">
+                            <div id="tradingview_chart" style="height: 300px; width: 100%;"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                            <script type="text/javascript">
+                                new TradingView.widget({
+                                    "autosize": true,
+                                    "height": 300,
+                                    "symbol": "BINANCE:SOLUSD",
+                                    "interval": "1",
+                                    "timezone": "Europe/Zurich",
+                                    "theme": "Dark",
+                                    "style": "1",
+                                    "locale": "en",
+                                    "toolbar_bg": "#1A1A2E",
+                                    "enable_publishing": false,
+                                    "withdateranges": false,
+                                    "hide_side_toolbar": true,
+                                    "allow_symbol_change": false,
+                                    "details": false,
+                                    "studies": [],
+                                    "container_id": "tradingview_chart"
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="terminal-panel trade-panel">
+                        <div class="panel-title">Trade</div>
+                        <div class="trade-content">
+                            <div class="percentage-buttons">
+                                <button class="percent-btn" data-percent="25">25%</button>
+                                <button class="percent-btn" data-percent="50">50%</button>
+                                <button class="percent-btn" data-percent="75">75%</button>
+                                <button class="percent-btn" data-percent="100">100%</button>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="buy-btn" id="buy-btn">BUY</button>
+                                <button class="sell-btn" id="sell-btn">SELL</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="terminal-panel order-panel">
+                        <div class="panel-title">Orders</div>
+                        <div class="order-content">
+                            <div class="order-header">
+                                <span>Price SOL/USD</span>
+                                <span>Amount</span>
+                                <span>Total</span>
+                            </div>
+                            <div class="order-rows">
+                                <div class="order-row" id="order-1">
+                                    <span class="order-price">175.33</span>
+                                    <span class="order-amount">290</span>
+                                    <span class="order-total">50845</span>
+                                </div>
+                                <div class="order-row" id="order-2">
+                                    <span class="order-price">175.63</span>
+                                    <span class="order-amount">241</span>
+                                    <span class="order-total">42326</span>
+                                </div>
+                                <div class="order-row" id="order-3">
+                                    <span class="order-price">175.89</span>
+                                    <span class="order-amount">182</span>
+                                    <span class="order-total">32011</span>
+                                </div>
+                                <div class="order-row" id="order-4">
+                                    <span class="order-price">176.12</span>
+                                    <span class="order-amount">287</span>
+                                    <span class="order-total">50546</span>
+                                </div>
+                                <div class="order-row" id="order-5">
+                                    <span class="order-price">176.38</span>
+                                    <span class="order-amount">352</span>
+                                    <span class="order-total">62085</span>
+                                </div>
+                                <div class="order-row" id="order-6">
+                                    <span class="order-price">176.65</span>
+                                    <span class="order-amount">345</span>
+                                    <span class="order-total">60944</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="terminal-panel portfolio-panel">
+                        <div class="panel-title">Portfolio</div>
+                        <div class="portfolio-content">
+                            <div class="portfolio-item">
+                                <span class="asset-name">SOL</span>
+                                <span class="asset-amount">42.000</span>
+                                <span class="asset-value">$17,291.367</span>
+                                <span class="asset-change positive">+4.1%</span>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="asset-name">DREAM</span>
+                                <span class="asset-amount">1337000.000</span>
+                                <span class="asset-value">$1,478.548</span>
+                                <span class="asset-change negative">-4.7%</span>
+                            </div>
+                            <div class="portfolio-item">
+                                <span class="asset-name">BTC</span>
+                                <span class="asset-amount">45000</span>
+                                <span class="asset-value">$5,564.834</span>
+                                <span class="asset-change positive">+2.6%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                
+                <div class="terminal-footer">
+                    <div class="connection-status">Moon Exchange</div>
+                    <div class="system-status">DEGEN MODE</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Rug Scanner Window -->
+        <div class="app-window white-window-bg" id="scanner-window">
+            <div class="window-title-bar">
+                <div class="window-title">🔍 Y2K COIN Rug Scanner</div>
+                <div class="window-controls">
+                    <div class="window-btn minimize">─</div>
+                    <div class="window-btn maximize">□</div>
+                    <div class="window-btn close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="scanner-header">
+                    <h2>🔍 Y2K COIN Security Scanner</h2>
+                    <p>Advanced blockchain analysis for Y2K COIN</p>
+                    <div class="scanner-status" id="scanner-status">Ready to scan</div>
+                </div>
+                
+                <div class="scanner-input">
+                    <div class="coin-selector">
+                        <button class="coin-btn active" data-coin="y2k">Y2K COIN</button>
+                        <button class="coin-btn" data-coin="custom">Custom Token</button>
+                    </div>
+                    <input type="text" placeholder="Enter contract address..." class="scan-input" id="scan-input" value="9PUqM9R6cEtAw6XqnQSWKs81CBQayBQDrccHti2hpump">
+                    <button class="scan-btn" id="scan-btn">🔍 SCAN NOW</button>
+                </div>
+                
+                <div class="scanning-animation" id="scanning-animation" style="display: none;">
+                    <div class="scanning-bar">
+                        <div class="scanning-progress" id="scanning-progress"></div>
+                    </div>
+                    <div class="scanning-text" id="scanning-text">Analyzing blockchain...</div>
+                </div>
+                
+                <div class="scan-results" id="scan-results">
+                    <div class="scan-item">
+                        <span class="scan-label">🔒 Liquidity Locked:</span>
+                        <span class="scan-result" id="liquidity-result">⏳ Scanning...</span>
+                    </div>
+                    <div class="scan-item">
+                        <span class="scan-label">✅ Contract Verified:</span>
+                        <span class="scan-result" id="contract-result">⏳ Scanning...</span>
+                    </div>
+                    <div class="scan-item">
+                        <span class="scan-label">👑 Ownership Renounced:</span>
+                        <span class="scan-result" id="ownership-result">⏳ Scanning...</span>
+                    </div>
+                    <div class="scan-item">
+                        <span class="scan-label">🛡️ Security Score:</span>
+                        <span class="scan-result" id="security-result">⏳ Scanning...</span>
+                    </div>
+                    <div class="scan-item">
+                        <span class="scan-label">📊 Risk Level:</span>
+                        <span class="scan-result" id="risk-result">⏳ Scanning...</span>
+                    </div>
+                    <div class="scan-item">
+                        <span class="scan-label">🎯 Overall Status:</span>
+                        <span class="scan-result" id="overall-result">⏳ Scanning...</span>
+                    </div>
+                </div>
+                
+                <div class="scan-summary" id="scan-summary" style="display: none;">
+                    <div class="summary-header">
+                        <h3>🎉 SCAN COMPLETE</h3>
+                    </div>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <span class="summary-icon">🟢</span>
+                            <span class="summary-text">Y2K COIN is 100% LEGIT and SAFE to trade!</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-icon">🔒</span>
+                            <span class="summary-text">All security checks passed with flying colors</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-icon">🚀</span>
+                            <span class="summary-text">Ready for the moon mission!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MSN Messenger Window -->
+        <div class="app-window white-window-bg" id="messenger-window">
+            <div class="window-title-bar">
+                <div class="window-title">Crypto Dreams Chat Room</div>
+                <div class="window-controls">
+                    <div class="window-btn minimize">─</div>
+                    <div class="window-btn maximize">□</div>
+                    <div class="window-btn close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="chat-container">
+                    <!-- Left Panel: Contacts -->
+                    <div class="contacts-panel">
+                        <div class="contacts-header">
+                            <span class="back-arrow">←</span>
+                            <span class="contacts-title">Contacts (5 online)</span>
+                        </div>
+                        <div class="contacts-list">
+                            <div class="contact-item" data-username="CryptoKing420">
+                                <span class="contact-icon">👑</span>
+                                <span class="contact-name">CryptoKing420</span>
+                                <span class="contact-status online">Online</span>
+                            </div>
+                            <div class="contact-item" data-username="DiamondHands69">
+                                <span class="contact-icon">💎</span>
+                                <span class="contact-name">DiamondHands69</span>
+                                <span class="contact-status online">Online</span>
+                            </div>
+                            <div class="contact-item" data-username="MoonBoy2024">
+                                <span class="contact-icon">🌙</span>
+                                <span class="contact-name">MoonBoy2024</span>
+                                <span class="contact-status away">Away</span>
+                            </div>
+                            <div class="contact-item" data-username="DegenTrader">
+                                <span class="contact-icon">🎰</span>
+                                <span class="contact-name">DegenTrader</span>
+                                <span class="contact-status online">Online</span>
+                            </div>
+                            <div class="contact-item" data-username="RocketMan">
+                                <span class="contact-icon">🚀</span>
+                                <span class="contact-name">RocketMan</span>
+                                <span class="contact-status online">Online</span>
+                            </div>
+                            <div class="contact-item" data-username="LamboLover">
+                                <span class="contact-icon">🏎️</span>
+                                <span class="contact-name">LamboLover</span>
+                                <span class="contact-status offline">Offline</span>
+                            </div>
+                            <div class="contact-item" data-username="HODLQueen">
+                                <span class="contact-icon">👑</span>
+                                <span class="contact-name">HODLQueen</span>
+                                <span class="contact-status online">Online</span>
+                            </div>
+                            <div class="contact-item" data-username="SolSurfer">
+                                <span class="contact-icon">🏄</span>
+                                <span class="contact-name">SolSurfer</span>
+                                <span class="contact-status away">Away</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Panel: Chat Room -->
+                    <div class="chat-panel">
+                        <div class="chat-header">
+                            <span class="chat-title">Crypto Dreams Chat Room</span>
+                            <div class="chat-controls">
+                                <button class="nudge-btn">Nudge</button>
+                                <button class="block-btn">Block</button>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message">
+                                <span class="message-time">14:20</span>
+                                <span class="message-sender">CryptoKing420:</span>
+                                <span class="message-text">YO! Did you see SOL pumping?! 🚀</span>
+                            </div>
+                            <div class="message">
+                                <span class="message-time">14:22</span>
+                                <span class="message-sender">DiamondHands69:</span>
+                                <span class="message-text">HODLING STRONG! Never selling! 💎🙌</span>
+                            </div>
+                            <div class="message">
+                                <span class="message-time">14:25</span>
+                                <span class="message-sender">MoonBoy2024:</span>
+                                <span class="message-text">When lambo? Asking for a friend... 🏎️</span>
+                            </div>
+                            <div class="message">
+                                <span class="message-time">14:28</span>
+                                <span class="message-sender">DegenTrader:</span>
+                                <span class="message-text">Just bought more DREAM tokens! TO THE MOON! 🌙</span>
+                            </div>
+                            <div class="message">
+                                <span class="message-time">14:30</span>
+                                <span class="message-sender">RocketMan:</span>
+                                <span class="message-text">My portfolio is finally green! 📈</span>
+                            </div>
+                            <div class="message">
+                                <span class="message-time">14:32</span>
+                                <span class="message-sender">HODLQueen:</span>
+                                <span class="message-text">Number go up! 📈</span>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <div class="message-input-container">
+                                <input type="text" placeholder="Type a message..." class="message-input" id="message-input">
+                                <button class="send-btn" id="send-btn">Send</button>
+                            </div>
+                            <div class="emoji-bar">
+                                <button class="emoji-btn" data-emoji="😊">😊</button>
+                                <button class="emoji-btn" data-emoji="😉">😉</button>
+                                <button class="emoji-btn" data-emoji="🚀">🚀</button>
+                                <button class="emoji-btn" data-emoji="💎">💎</button>
+                                <button class="emoji-btn" data-emoji="🌙">🌙</button>
+                                <button class="emoji-btn" data-emoji="🏎️">🏎️</button>
+                                <button class="emoji-btn" data-emoji="💰">💰</button>
+                                <button class="emoji-btn" data-emoji="📈">📈</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meme Folder Window -->
+        <div class="app-window white-window-bg" id="meme-window">
+            <div class="window-title-bar">
+                <div class="window-title">Meme Folder</div>
+                <div class="window-controls">
+                    <div class="window-btn minimize">─</div>
+                    <div class="window-btn maximize">□</div>
+                    <div class="window-btn close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="meme-header">
+                    <h2>📁 Meme Folder</h2>
+                    <p>Your collection of legendary memes</p>
+                </div>
+                <div class="meme-grid">
+                    <div class="meme-item" data-meme="aesthetic.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/aesthetic.jpg" alt="Aesthetic Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">aesthetic.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="dank.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/dank.jpg" alt="Dank Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">dank.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="smiles.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/smiles.jpg" alt="Smiles Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">smiles.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="yoshi.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/yoshi.jpg" alt="Yoshi Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">yoshi.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="2002.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/2002.jpg" alt="2002 Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">2002.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="nyan.png">
+                        <div class="meme-preview">
+                            <img src="memes/nyan.png" alt="Nyan Cat" class="meme-image">
+                        </div>
+                        <span class="meme-name">nyan.png</span>
+                    </div>
+                    <div class="meme-item" data-meme="princess.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/princess.jpg" alt="Princess Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">princess.jpg</span>
+                    </div>
+                    <div class="meme-item" data-meme="rabbit.jpg">
+                        <div class="meme-preview">
+                            <img src="memes/rabbit.jpg" alt="Rabbit Meme" class="meme-image">
+                        </div>
+                        <span class="meme-name">rabbit.jpg</span>
+                    </div>
+                </div>
+                
+                <!-- Meme Viewer Modal -->
+                <div class="meme-viewer" id="meme-viewer" style="display: none;">
+                    <div class="meme-viewer-content">
+                        <div class="meme-viewer-header">
+                            <span class="meme-viewer-title" id="meme-viewer-title">Meme Viewer</span>
+                            <button class="meme-viewer-close" id="meme-viewer-close">×</button>
+                        </div>
+                        <div class="meme-viewer-body">
+                            <img id="meme-viewer-image" src="" alt="Meme" class="meme-viewer-img">
+                        </div>
+                        <div class="meme-viewer-footer">
+                            <button class="meme-action-btn" id="meme-download">💾 Download</button>
+                            <button class="meme-action-btn" id="meme-share">📤 Share</button>
+                            <button class="meme-action-btn" id="meme-favorite">❤️ Favorite</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Media Player -->
+        <div class="music-player" id="media-window" style="display: none;">
+            <div class="player-controls">
+                <button class="window-btn minimize-btn" title="Minimize">−</button>
+                <button class="window-btn maximize-btn" title="Maximize">□</button>
+                <button class="window-btn close-btn" title="Close">×</button>
+            </div>
+            
+            <!-- Audio Element -->
+            <audio id="audio-player" preload="auto" loop>
+                <source src="Neon Horizons.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            
+            <div class="player-container">
+                <div class="player-header">
+                    <h3>🎵 Y2K Music Player</h3>
+                </div>
+                
+                <div class="album-section">
+                    <div class="album-artwork">
+                        <div class="vinyl-disc">
+                            <div class="vinyl-center"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="track-info">
+                    <h4 class="track-title">Neon Horizons</h4>
+                    <p class="track-artist">Y2K Soundtrack</p>
+                </div>
+                
+                <div class="progress-section">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="time-display">
+                        <span class="current-time">0:00</span>
+                        <span class="total-time">3:45</span>
+                    </div>
+                </div>
+                
+                <div class="controls-section">
+                    <button class="control-btn shuffle-btn" title="Shuffle">🔀</button>
+                    <button class="control-btn prev-btn" title="Previous">⏮</button>
+                    <button class="control-btn play-btn" title="Play">▶️</button>
+                    <button class="control-btn next-btn" title="Next">⏭</button>
+                    <button class="control-btn repeat-btn" title="Repeat">🔁</button>
+                </div>
+                
+                <div class="volume-section">
+                    <span class="volume-icon">🔊</span>
+                    <div class="volume-bar">
+                        <div class="volume-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Degen Mode Window -->
+        <div class="app-window white-window-bg" id="degen-window">
+            <div class="window-title-bar">
+                <div class="window-title">🎰 Degen Mode - Y2K COIN Casino</div>
+                <div class="window-controls">
+                    <div class="window-btn minimize">─</div>
+                    <div class="window-btn maximize">□</div>
+                    <div class="window-btn close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="degen-header">
+                    <h2>🎰 Y2K COIN Casino</h2>
+                    <div class="warning">⚠️ HIGH RISK - APE AT YOUR OWN RISK ⚠️</div>
+                    <div class="jackpot-display">
+                        <span class="jackpot-label">JACKPOT:</span>
+                        <span class="jackpot-amount" id="jackpot-amount">$50,000</span>
+                    </div>
+                </div>
+                
+                <div class="slot-machine-container">
+                    <div class="slot-machine">
+                        <div class="slot-reel" id="reel1">
+                            <div class="reel-content">🎰</div>
+                        </div>
+                        <div class="slot-reel" id="reel2">
+                            <div class="reel-content">🎰</div>
+                        </div>
+                        <div class="slot-reel" id="reel3">
+                            <div class="reel-content">🎰</div>
+                        </div>
+                    </div>
+                    <div class="win-line"></div>
+                </div>
+                
+                <div class="degen-controls">
+                    <div class="bet-controls">
+                        <label>Bet Amount:</label>
+                        <div class="bet-buttons">
+                            <button class="bet-btn" data-bet="10">$10</button>
+                            <button class="bet-btn" data-bet="50">$50</button>
+                            <button class="bet-btn" data-bet="100">$100</button>
+                            <button class="bet-btn" data-bet="500">$500</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn max-bet-btn" id="max-bet-btn">MAX BET</button>
+                        <button class="action-btn auto-spin-btn" id="auto-spin-btn">AUTO SPIN</button>
+                        <button class="action-btn reset-btn" id="reset-btn">RESET</button>
+                    </div>
+                    
+                    <button class="spin-btn" id="spin-btn">🎰 SPIN TO WIN 🎰</button>
+                    
+                    <div class="balance-display">
+                        <span class="balance-label">💰 Balance:</span>
+                        <span class="balance-amount" id="degen-balance">$1,000</span>
+                    </div>
+                </div>
+                
+                <div class="degen-stats">
+                    <div class="stat">
+                        <span class="stat-icon">🏆</span>
+                        <span class="stat-label">Wins:</span>
+                        <span class="stat-value" id="wins-count">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">💸</span>
+                        <span class="stat-label">Losses:</span>
+                        <span class="stat-value" id="losses-count">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🍀</span>
+                        <span class="stat-label">Luck:</span>
+                        <span class="stat-value" id="luck-percentage">50%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">📈</span>
+                        <span class="stat-label">Total Won:</span>
+                        <span class="stat-value" id="total-won">$0</span>
+                    </div>
+                </div>
+                
+                <div class="recent-wins" id="recent-wins">
+                    <h3>🎉 Recent Wins</h3>
+                    <div class="wins-list" id="wins-list">
+                        <div class="no-wins">No wins yet... Keep spinning! 🎰</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Browser -->
+        <div class="web-browser" id="netscape-window">
+            <div class="browser-title-bar">
+                <div class="browser-title">Internet Explorer - Y2K COIN</div>
+                <div class="browser-controls">
+                    <div class="browser-btn minimize">─</div>
+                    <div class="browser-btn maximize">□</div>
+                    <div class="browser-btn close">×</div>
+                </div>
+            </div>
+            <div class="browser-toolbar">
+                <div class="nav-buttons">
+                    <button class="nav-btn">Back</button>
+                    <button class="nav-btn">Forward</button>
+                    <button class="nav-btn">Stop</button>
+                    <button class="nav-btn">Refresh</button>
+                    <button class="nav-btn">Home</button>
+                </div>
+            </div>
+            
+            <div class="browser-location-bar">
+                <div class="location-field">
+                    <span>Address:</span>
+                    <input type="text" value="y2kcoin.fun" readonly>
+                </div>
+                <button class="go-btn">Go</button>
+            </div>
+            
+            <div class="browser-content">
+                <div class="landing-page">
+                    <div class="y2k-header">
+                        <div class="mascot">👤</div>
+                        <h1 class="main-headline">Y2K COIN</h1>
+                        <div class="y2k-subtitle">Welcome to the Future • Est. 2000</div>
+                    </div>
+                    
+                    <div class="y2k-banner">
+                        <div class="banner-text">🌟 NEW MILLENNIUM CRYPTO 🌟</div>
+                    </div>
+                    
+                    <p class="tagline">The memecoin that believes in your wildest crypto dreams!</p>
+                    
+                    <div class="y2k-counter">
+                        <div class="counter-item">
+                            <span class="counter-number">2000</span>
+                            <span class="counter-label">YEAR</span>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter-number">∞</span>
+                            <span class="counter-label">POSSIBILITIES</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tokenomics and Roadmap Sections -->
+                    <div class="info-sections">
+                        <div class="info-panel tokenomics-panel">
+                            <h3 class="panel-title">🎯 Tokenomics</h3>
+                            <ul class="panel-list">
+                                <li>• Total Supply: 1 Billion Y2K</li>
+                                <li>• Burned: 50% (To the moon!)</li>
+                                <li>• LP Locked: Forever and ever</li>
+                                <li>• Dev Wallet: 0% (We're not greedy!)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info-panel roadmap-panel">
+                            <h3 class="panel-title">⭐ Roadmap</h3>
+                            <ul class="panel-list">
+                                <li>✅ Phase 1: Launch</li>
+                                <li>✅ Phase 2: Moon</li>
+                                <li>🔄 Phase 3: Mars</li>
+                                <li>⏳ Phase 4: Andromeda</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <button class="cta-btn buy-btn y2k-button">
+                            <span class="btn-icon">🚀</span>
+                            <span class="btn-text">BUY NOW</span>
+                        </button>
+                        <button class="cta-btn hodl-btn y2k-button">
+                            <span class="btn-icon">💎</span>
+                            <span class="btn-text">HODL FOREVER</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Feature Cards -->
+                    <div class="feature-cards">
+                        <div class="feature-card">
+                            <div class="feature-icon">🪙</div>
+                            <div class="feature-text">Spinning Coin</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <div class="feature-text">Rocket Launch</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💎</div>
+                            <div class="feature-text">Diamond Hands</div>
+                        </div>
+                    </div>
+                    
+                    <!-- What Y2KERS Say Section -->
+                    <div class="testimonials-section">
+                        <div class="testimonials-header">
+                            <span class="testimonials-icon">💬</span>
+                            <h3 class="testimonials-title">What Y2KERS Say</h3>
+                        </div>
+                        <div class="testimonials-content">
+                            <div class="testimonial-box">
+                                <div class="testimonial-text">
+                                    <strong>CryptoKing420:</strong> "This coin changed my life! I went from ramen to lambos!" 🏎️
+                                </div>
+                            </div>
+                            <div class="testimonial-box">
+                                <div class="testimonial-text">
+                                    <strong>DiamondHands69:</strong> "HODLING since day 1! Never selling! 💎🙌"
+                                </div>
+                            </div>
+                            <div class="testimonial-box">
+                                <div class="testimonial-text">
+                                    <strong>MoonBoy2024:</strong> "1 SOL = 1 Y2K = 1 LAMBO! Math checks out! 🔢"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="y2k-footer">
+                        <div class="footer-text">© 2000 Y2K COIN • All Rights Reserved</div>
+                        <div class="footer-text">Best viewed in Internet Explorer 5.0+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="browser-status-bar">
+                <span>Done</span>
+                <span>Internet Zone</span>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="start-button">
+                <div class="start-icon">⊞</div>
+                <span>Start</span>
+            </div>
+            <div class="taskbar-tabs" id="taskbar-tabs">
+                <!-- Dynamic tabs will be added here when windows are opened -->
+            </div>
+            <div class="taskbar-icons">
+                <div class="taskbar-icon" data-app="trading" title="Trading Terminal">📈</div>
+                <div class="taskbar-icon" data-app="scanner" title="Rug Scanner">🔍</div>
+                <div class="taskbar-icon" data-app="messenger" title="MSN Messenger">💬</div>
+                <div class="taskbar-icon" data-app="media" title="Media Player">🎵</div>
+                <div class="taskbar-icon" data-app="degen" title="Degen Mode">🎰</div>
+                <div class="taskbar-icon" data-app="browser" title="Netscape Navigator">🌐</div>
+            </div>
+            <div class="taskbar-right">
+                <div class="time" id="current-time">11:07:16 AM</div>
+                <div class="taskbar-icon">💰</div>
+                <div class="taskbar-icon">☀️</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixContainer = document.getElementById('matrix-rain');
+            
+            if (!matrixContainer) {
+                console.log('Matrix container not found!');
+                return;
+            }
+            
+            const matrixSymbols = '01';
+            const columns = Math.floor(window.innerWidth / 20);
+            
+            // Clear any existing columns
+            matrixContainer.innerHTML = '';
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = i * 20 + 'px';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += matrixSymbols[Math.floor(Math.random() * matrixSymbols.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                
+                matrixContainer.appendChild(column);
+            }
+            
+            console.log('Matrix rain created with', matrixContainer.children.length, 'columns');
+        }
+        
+        // Initialize matrix rain when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixRain();
+        });
+        
+        // Recreate matrix rain on window resize
+        window.addEventListener('resize', function() {
+            createMatrixRain();
+        });
+        
+        // Force recreate matrix rain after a short delay to ensure DOM is ready
+        setTimeout(function() {
+            createMatrixRain();
+        }, 100);
+    </script>
+</body>
+</html> 
