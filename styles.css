@@ -97,6 +97,29 @@ body {
     font-weight: bold;
 }
 
+/* Specific icon styles */
+.community-icon {
+    background: white;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.community-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 /* ===== CENTRAL CONTENT ===== */
 .central-content {
     position: absolute;
@@ -1092,6 +1115,17 @@ body {
 .landing-page .mascot {
     font-size: 80px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.browser-logo {
+    max-width: 120px;
+    height: auto;
+    border-radius: 10px;
+    background: transparent;
 }
 
 .landing-page .main-headline {

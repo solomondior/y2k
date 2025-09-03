@@ -3447,8 +3447,8 @@ function shareMeme(memeSrc) {
             title: 'Check out this dank meme!',
             text: 'Look at this Y2K meme I found!',
             url: window.location.href
-        });
-    } else {
+                    });
+                } else {
         // Fallback: copy to clipboard
         navigator.clipboard.writeText(window.location.href).then(() => {
             showMemeFeedback('📤 Link copied to clipboard!');
